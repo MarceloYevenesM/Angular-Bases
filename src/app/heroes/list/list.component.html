@@ -1,0 +1,21 @@
+<h3>Listado de Héroes</h3>
+
+<!-- deleted no esta definido al inicio por lo tanto parte como false-->
+<!-- El nombre del else  es la referencia a un template en este caso nothingWasDeleted-->
+<div *ngIf="deletedHero; else nothingWasDeleted">
+  <h3>Heroe Borrado <small class="text-danger"> {{deletedHero}} </small></h3>
+</div>
+
+<!-- Un div que no existe y que debo darle estructura-->
+<ng-template #nothingWasDeleted> <!-- Referencia(local) al template del else -->
+  <h3 *ngIf="!deletedHero">No ha borrado nada</h3>
+</ng-template>
+
+<!-- Se muestra solo si el largo de los elementos es mayor que 0 -->
+<button *ngIf="heroNames.length > 0" class="btn btn-outline-danger" (click)="removeLastHeroe()">
+  Borrar último Heroes
+</button>
+
+<ul class="mt-2 list-group">
+  <li *ngFor="let name of heroNames" class="list-group-item">{{ name }}</li>
+</ul>
