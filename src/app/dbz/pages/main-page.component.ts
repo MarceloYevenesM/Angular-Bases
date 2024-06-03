@@ -10,8 +10,21 @@ import { DbzService } from '../services/dbz.services';
 export class MainPageComponente {
 
   //De tipo del mismo nombre del servicio
-  constructor(public dbzService: DbzService) { /* Habilitar en todo el componente del main page la info utilizada en el servicio*/
+  constructor(private dbzService: DbzService) { /* Habilitar en todo el componente del main page la info utilizada en el servicio*/
+  /* Debe ser siempre privado para no exponerlo al mundo */
+  }
 
+  /* Con esto expongo la info */
+  get characters(): Character[] {
+    return [...this.dbzService.characters];
+  }
+
+  onDeleteCharacter( id:string):void{
+    this.dbzService.deleteCharacterById(id);
+  }
+
+  onNewCharacter( characters: Character):void{
+    this.dbzService.addCharacter(characters);
   }
 
 }

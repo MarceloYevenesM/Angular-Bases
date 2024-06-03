@@ -13,7 +13,7 @@ export class ListComponent {
 
   @Output()
   /* Emitir evento al padre */
-  public onDelete: EventEmitter<number> = new EventEmitter();
+  public onDelete: EventEmitter<string> = new EventEmitter();
 
   @Input() //Puede recibir una property llamada character list
   public characterList: Character[] = [{
@@ -22,8 +22,8 @@ export class ListComponent {
   }]
 
 
-  onDeleteCharacters(index:number):void{
+  onDeleteCharacters(id:string):void{
     //onDelete = Index value: number
-    this.onDelete.emit(index);
+    this.onDelete.emit(id);
   }
 }
